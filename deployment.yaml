@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-slack-bot
+  labels:
+    app: my-slack-bot
+    role: bot
+spec:
+  type: NodePort
+  ports:
+    - port: 8765
+      name: my-slack-bot
+      nodePort: 30000
+  selector:
+    app: my-slack-bot
+    role: bot
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-slack-bot
+spec:
+  selector:
+    matchLabels:
+      app: my-slack-bot
+  template:
+    metadata:
+      labels:
+        app: my-slack-bot
+        role: bot
+    spec:
+      containers:
+      - name: my-slack-bot
+        image: davideschiera/my-slack-bot:0.1
+        ports:
+        - containerPort: 8765
+        env:
+          - name: CLIENT_ID
+            value: "xxx"
+          - name: CLIENT_SECRET
+            value: "xxx"
+          - name: CLIENT_SIGNIGN_SECRET
+            value: "xxx"
+          - name: CLIENT_VERIFICATION_TOKEN
+            value: "xxx"
+

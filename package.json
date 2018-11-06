@@ -1,0 +1,23 @@
+{
+  "name": "my-slack-bot",
+  "version": "0.1.0",
+  "description": "Slack bot example",
+  "author": "davide.schiera@gmail.com",
+  "main": "src/main.ts",
+  "scripts": {
+    "build": "npx tslint src/**/*.ts && npx tsc",
+    "start": "node dist/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "botkit": "0.6.20",
+    "debug": "4.1.0",
+    "forever": "0.15.3",
+    "hoek": "6.0.2",
+    "tslint": "5.11.0",
+    "typescript": "3.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "10.12.2"
+  }
+}
